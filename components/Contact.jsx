@@ -6,36 +6,57 @@ import {
   AiFillInstagram,
   AiFillGithub,
 } from 'react-icons/ai';
-import { FaDev } from 'react-icons/fa';
+
 import emailjs from '@emailjs/browser';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import Toast from './Toaster';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Contact = () => {
-  const ref = useRef(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmiError, setIsSubmiError] = useState(false);
   const form = useRef();
-
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
         'service_1p1pabl',
-        'template_t3vo30r',
+        'template_e6ra0ui',
         form.current,
-        'e-tUlHJlOTz4QKTCO'
+        'laspjFSO16IKLSScA'
       )
       .then((result) => {
+        console.log(result);
+        setIsSubmitted(true);
         form.current.reset();
       })
       .catch((error) => {
+        setIsSubmiError(true);
         console.log(error.text);
       });
   };
+
   return (
     <div
       className='w-full h-fit px-[40px]  py-10 md:py-20 max-xs:px-[20px] relative bg-light-bg'
       id='contact'
     >
+      {isSubmitted ? (
+        <Toast
+          message={'Account Created Successfully'}
+          setIsSubmitted={setIsSubmitted}
+          color={'green'}
+        />
+      ) : null}
+      {isSubmiError ? (
+        <Toast
+          message={'Couldn not sent email'}
+          setIsSubmiError={setIsSubmiError}
+          color='green'
+        />
+      ) : null}
       <div className='max-w-[1250px] mx-auto'>
         <div className='grid lg:grid-cols-2 grid-cols-1 gap-6'>
           <div>
@@ -70,25 +91,42 @@ const Contact = () => {
               </a>
             </h4>
             <div className='mt-12'>
-              <div className='flex flex-col gap-2'>
+              <div className='flex flex-col gap-2 space-y-2'>
                 <h5 className='text-dark-blue'>Socials</h5>
                 <div className='flex gap-5'>
-                  <a href='#' className='text-3xl text-dark-blue'>
+                  <Link
+                    href='https://github.com/mrmsp-dev'
+                    className='text-3xl text-dark-blue'
+                    target='_blank'
+                  >
                     <AiFillGithub />
-                  </a>
-                  <a href='#' className='text-3xl text-dark-blue'>
-                    <AiFillLinkedin />
-                  </a>
-                  <a href='#' className='text-3xl text-dark-blue'>
+                  </Link>
+                  <Link
+                    href='https://www.instagram.com/parvezmohammadshariar/'
+                    className='text-3xl text-dark-blue'
+                    target='_blank'
+                  >
                     <AiFillInstagram />
-                  </a>
-                  <a href='#' className='text-3xl text-dark-blue'>
+                  </Link>
+                  <Link
+                    href='https://www.linkedin.com/in/mrmsp'
+                    className='text-3xl text-dark-blue'
+                    target='_blank'
+                  >
+                    <AiFillLinkedin />
+                  </Link>
+
+                  <Link href='#' className='text-3xl text-dark-blue'>
                     <AiFillTwitterSquare />
-                  </a>
-                  <a href='#' className='text-3xl text-dark-blue'>
-                    <FaDev />
-                  </a>
+                  </Link>
                 </div>
+                <Image
+                  src='/assets/wechat.png'
+                  width={130}
+                  height={130}
+                  alt='html'
+                  className='mb-2 '
+                />
               </div>
             </div>
           </div>
@@ -107,6 +145,7 @@ const Contact = () => {
                   type='email'
                   id='email'
                   name='email'
+                  required
                   placeholder='Your email'
                   autoComplete='email'
                   className='w-full text-gray-700 border border-slate-200 rounded py-3 px-4 mb-4 leading-tight focus:outline-dark-red'
@@ -115,6 +154,7 @@ const Contact = () => {
                   type='text'
                   id='subject'
                   name='subject'
+                  required
                   placeholder='Subject'
                   className='w-full text-gray-700 border border-slate-200 rounded py-3 px-4 mb-4 leading-tight focus:outline-dark-red'
                 />

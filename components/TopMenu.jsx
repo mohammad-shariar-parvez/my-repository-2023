@@ -33,9 +33,15 @@ const TopMenu = () => {
             </div>
           </div>
 
-          <button className='bg-dark-blue text-white px-4 py-1 rounded-md hover:bg-dark-blue/75'>
-            Download CV
-          </button>
+          <Link
+            href={
+              'https://drive.google.com/file/d/1-V8YlKCDi1tD1N7WlzJnvya0synlB8xp/view?usp=sharing'
+            }
+          >
+            <button className='bg-dark-blue text-white px-4 py-1 rounded-md hover:bg-dark-blue/75'>
+              Download CV
+            </button>
+          </Link>
         </div>
       </div>
     </div>

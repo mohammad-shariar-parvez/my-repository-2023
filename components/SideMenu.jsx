@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { BsYoutube } from 'react-icons/bs';
-import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
-import { FaDev } from 'react-icons/fa';
+
+import { AiFillLinkedin, AiFillGithub, AiFillFacebook } from 'react-icons/ai';
+
 import { useMenuStore } from '@/store/useMenuStore';
 import { sidebarMenuLinks } from '@/constants';
 import path from 'path';
 import { set } from 'zod';
+import Link from 'next/link';
 
 const SideMenu = () => {
   const pathname = usePathname();
@@ -80,18 +81,31 @@ const SideMenu = () => {
           </div>
           <div className='flex items-center flex-col justify-center text-center'>
             <div className='flex flex-col lg:flex-row items-center gap-4 mb-3'>
-              <a href='/' target='_blank' className='social-icon text-white'>
-                <BsYoutube />
-              </a>
-              <a href='/' target='_blank' className='social-icon text-white'>
+              <Link
+                href='https://www.facebook.com/thunder.tonmoy'
+                target='_blank'
+                className='text-3xl text-dark-blue'
+              >
+                <AiFillFacebook />
+              </Link>
+              <Link
+                href='https://www.linkedin.com/in/mrmsp'
+                target='_blank'
+                className='text-3xl text-dark-blue'
+              >
                 <AiFillLinkedin />
-              </a>
-              <a href='/' target='_blank' className='social-icon text-white'>
+              </Link>
+
+              <Link
+                href='https://github.com/mrmsp-dev'
+                target='_blank'
+                className='text-3xl text-dark-blue'
+              >
                 <AiFillGithub />
-              </a>
-              <a href='/' target='_blank' className='social-icon text-white'>
+              </Link>
+              {/* <Link href='/' target='_blank' className='social-icon text-white'>
                 <FaDev />
-              </a>
+              </Link> */}
             </div>
             <p className='max-lg:hidden'>
               Copyright © 2023 Mohammad Shariar Parvez. All rights reserved.

@@ -34,7 +34,7 @@ const Hero = () => {
           </div>
         </div>
         <Image
-          src='/assets/hero.png'
+          src='/assets/my-bg one.png'
           width={400}
           height={400}
           alt='Mohammad Shariar Parvez'
