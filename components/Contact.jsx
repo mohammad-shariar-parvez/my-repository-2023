@@ -40,7 +40,7 @@ const Contact = () => {
 
   return (
     <div
-      className='w-full h-fit px-[40px]  py-10 md:py-20 max-xs:px-[20px] relative bg-light-bg'
+      className='w-full h-fit px-[40px]  py-10 md:py-20 max-xs:px-[20px] relative bg-light-bg mt-10'
       id='contact'
     >
       {isSubmitted ? (
@@ -170,7 +170,7 @@ const Contact = () => {
               <div className='flex justify-end'>
                 <button
                   type='submit'
-                  className='py-3 px-6 font-semibold text-white bg-dark-red hover:shadow-lg hover:bg-dark-red/75 transition-all duration-500 rounded'
+                  className='py-3 px-6 font-semibold  bg-gradient-to-r from-light-orrange to-dark-orrange text-white hover:bg-dark-orrange transition-all duration-500 rounded'
                 >
                   Submit
                 </button>

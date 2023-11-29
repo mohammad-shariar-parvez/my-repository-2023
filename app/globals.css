@@ -54,6 +54,6 @@ html {
   }
 
   .section-title {
-    @apply bg-dark-red text-white text-sm font-semibold py-3 px-5 uppercase rounded-full flex items-center gap-2;
+    @apply bg-gradient-to-r from-light-orrange to-dark-orrange text-white text-sm font-semibold py-3 px-5 uppercase rounded-full flex items-center gap-2;
   }
 }

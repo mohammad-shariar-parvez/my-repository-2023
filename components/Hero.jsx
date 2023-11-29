@@ -5,12 +5,12 @@ import '@/app/animations.css';
 
 const Hero = () => {
   return (
-    <section className='hero-container'>
+    <section className='hero-container overflow-hidden mb-10'>
       <div className='hero-content-container'>
         <div className='max-md:order-2 flex flex-col gap-5 z-40'>
           <div className='text-4xl lg:text-5xl space-y-4'>
             <h1>Hi, I'm Mohammad Shariar Parvez</h1>
-            <span className='font-bold text-dark-red inline-block'>
+            <span className='font-bold  inline-block bg-clip-text text-transparent bg-gradient-to-r from-light-orrange  to-dark-orrange'>
               Fullstack Developer
             </span>
             <h2>From Bangladesh</h2>
@@ -50,8 +50,8 @@ const Hero = () => {
         <li></li>
         <li></li>
         <li></li>
-        <li></li>
-        <li></li>
+        {/* <li></li>
+        <li></li> */}
       </ul>
     </section>
   );

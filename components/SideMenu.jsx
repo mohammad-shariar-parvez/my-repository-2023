@@ -3,7 +3,12 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from 'framer-motion';
 import { AiFillLinkedin, AiFillGithub, AiFillFacebook } from 'react-icons/ai';
 
 import { useMenuStore } from '@/store/useMenuStore';
@@ -34,7 +39,21 @@ const SideMenu = () => {
       setActiveLink(matchedLink);
     }
   }, [pathname]);
+  const hiddenStyle = {
+    opacity: 0.9,
+    scale: 0.5,
+    transition: {
+      duration: 0.3,
+    },
+  };
 
+  const visibleStyle = {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.3,
+    },
+  };
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflowY = 'hidden';
@@ -44,8 +63,12 @@ const SideMenu = () => {
   }, [isOpen]);
 
   return (
-    <>
-      <section
+    <motion.div
+    // initial={hiddenStyle}
+    // animate={isOpen ? visibleStyle : hiddenStyle}
+    // layout
+    >
+      <motion.section
         className={`side-menu border-r ${
           isOpen ? 'max-lg:block' : 'max-md:hidden'
         }`}
@@ -53,10 +76,11 @@ const SideMenu = () => {
         <div className='flex w-full flex-1 flex-col gap-10 justify-between items-center'>
           <div className='flex justify-center items-center flex-col gap-2'>
             <Image
-              src='/assets/sidemenu.png'
+              src='/assets/my-image.png'
               width={100}
               height={100}
               alt='msp'
+              className='rounded-full'
             />
             <p className='font-bold text-dark-blue'>Mohammad Shariar Parvez</p>
           </div>
@@ -70,7 +94,9 @@ const SideMenu = () => {
                   href={`${link.route}`}
                   key={link.label}
                   className={`relative flex justify-center items-center rounded-lg p-3 ${
-                    isActive ? 'bg-dark-red text-white' : ''
+                    isActive
+                      ? 'bg-gradient-to-r from-light-orrange  to-dark-orrange text-white'
+                      : ''
                   }`}
                   onClick={() => handleLinkClick(link)}
                 >
@@ -112,8 +138,8 @@ const SideMenu = () => {
             </p>
           </div>
         </div>
-      </section>
-    </>
+      </motion.section>
+    </motion.div>
   );
 };
 

@@ -15,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
+    <html lang='en' className='scroll-smooth'>
       <body className={poppins.className}>
         <main className='flex flex-row'>
           <SideMenu />

@@ -16,7 +16,7 @@ const ProjectCard = ({ name, server, client, image, deployed, projectUrl }) => {
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
-      className='mb-4 p-4 border border-gray-200 rounded-lg shadow-md bg-light-bg'
+      className='mb-4 p-5 border border-gray-200 rounded-lg shadow-md bg-light-bg'
     >
       <Image
         src={`/${image}`}
@@ -25,36 +25,39 @@ const ProjectCard = ({ name, server, client, image, deployed, projectUrl }) => {
         alt={`${name} Image`}
         className=' w-full mb-3 h-auto rounded '
       />
-      <h3>{name}</h3>
-      <div className='flex gap-2 items-center w-full'>
+      <h3 className='font-medium text-lg '>{name}</h3>
+      <div className='flex gap-5 items-center w-full mt-3'>
         <Link
-          href={server}
+          href={server ? server : ''}
           target='_blank'
-          className='text-dark-blue hover:underline text-2xl hover:text-dark-blue/75'
+          className='rounded-lg outline outline-1 outline-gray-300 px-4 py-1 text-dark-blue hover:underline text-2xl hover:text-dark-blue/75'
         >
-          <Image
-            src='/assets/git.svg.png'
-            width={20}
-            height={20}
-            alt='github'
-          />
+          <AiOutlineGithub />
         </Link>
         <Link
-          href={client}
+          href={client ? client : ''}
           target='_blank'
-          className=' text-dark-blue hover:underline text-2xl hover:text-dark-blue/75'
+          className={
+            client
+              ? `rounded-lg outline outline-1 outline-gray-300 px-4 py-1 text-dark-blue hover:underline text-2xl hover:text-dark-blue/75`
+              : `hidden`
+          }
         >
           <AiOutlineGithub />
         </Link>
 
         {deployed ? (
-          <a
-            href={projectUrl}
+          <Link
+            href={projectUrl ? projectUrl : ''}
             target='_blank'
-            className='text-dark-blue hover:underline text-2xl hover:text-dark-blue/75'
+            className={
+              projectUrl
+                ? 'rounded-lg outline outline-1 outline-gray-300 px-4 py-1 text-dark-blue hover:underline text-2xl hover:text-dark-blue/75'
+                : 'hidden'
+            }
           >
             <AiFillEye />
-          </a>
+          </Link>
         ) : null}
       </div>
     </motion.div>
